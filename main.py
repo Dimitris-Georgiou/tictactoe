@@ -21,7 +21,6 @@ def check_winner():
         print("\nWE HAVE A WINNER\nNICE JOB MR '{}'".format(tag))
         winner = True
 
-
 def next_round():
     global player
     global tag
