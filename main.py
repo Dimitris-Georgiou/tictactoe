@@ -1,3 +1,4 @@
+import time
 content = [7,8,9,4,5,6,1,2,3]
 round = 1
 player = 1
@@ -5,8 +6,6 @@ tag = ' '
 winner = False
 print("TicTacToe")
 
-def anouncer():
-    print("Player {} choose a spot!\n".format(tag))
 
 def check_winner():
     global winner
@@ -42,14 +41,29 @@ def choose():
     for n in range(len(content)):           
         if b == content[n]:    
             content[n] = tag
+def new_game():
+    global round
+    print("Do you want to play another round? (press Y/y to play or any other key to exit!")
+    next_game = input()
+    if next_game == "y" or next_game == "Y":
+        round = 1
+        main()
+    else:
+        print("See you soon!")
+        time.sleep(2)
+        exit()
 
-while(round <= 9):
-    board()
-    next_round()
-    anouncer()
-    choose()
-    check_winner()
-    if winner: break
-    round+=1
+def main():
+    global round
+    while(round <= 9):
+        board()
+        next_round()
+        print("Player {} choose a spot!\n".format(tag))
+        choose()
+        check_winner()
+        if winner:
+            new_game()
+        round+=1
+    new_game()
 
-    
+main()
